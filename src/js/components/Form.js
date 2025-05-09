@@ -17,6 +17,8 @@ form.addEventListener("submit", async function (e) {
     const card = createResultCard(info);
 
     document.getElementById("results").append(card);
+
+    document.getElementById("citySearch").value = "";
   } catch (e) {
     document.querySelector("#alert .container .note").textContent =
       "No Such Location";
