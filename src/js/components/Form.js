@@ -10,6 +10,7 @@ form.innerHTML = `
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
+  document.getElementById("citySearch").value = "";
 
   try {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${document.getElementById("citySearch").value}?unitGroup=us&key=LRZYB2ZVNDD8W5DCFVCJVSLNM&contentType=json`;
@@ -17,8 +18,6 @@ form.addEventListener("submit", async function (e) {
     const card = createResultCard(info);
 
     document.getElementById("results").append(card);
-
-    document.getElementById("citySearch").value = "";
   } catch (e) {
     document.querySelector("#alert .container .note").textContent =
       "No Such Location";
