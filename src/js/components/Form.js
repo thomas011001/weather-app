@@ -10,10 +10,11 @@ form.innerHTML = `
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
+  const city = document.getElementById("citySearch").value;
   document.getElementById("citySearch").value = "";
 
   try {
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${document.getElementById("citySearch").value}?unitGroup=us&key=LRZYB2ZVNDD8W5DCFVCJVSLNM&contentType=json`;
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=LRZYB2ZVNDD8W5DCFVCJVSLNM&contentType=json`;
     const info = await getWeatherInfo(url);
     const card = createResultCard(info);
 
