@@ -4,8 +4,8 @@ import createResultCard from "./Result";
 const form = document.createElement("form");
 
 form.innerHTML = `
-  <input type="text" id="citySearch" required>
-  <input type="submit">
+  <input type="text" id="citySearch" required placeholder="Search Your City or Country">
+  <input type="submit" style="display: none;">
 `;
 
 form.addEventListener("submit", async function (e) {
@@ -16,12 +16,11 @@ form.addEventListener("submit", async function (e) {
     const info = await getWeatherInfo(url);
     const card = createResultCard(info);
 
-    const oldResult = document.getElementById("result");
-    if (oldResult) oldResult.remove();
-
-    document.getElementById("root").append(card);
+    document.getElementById("results").append(card);
   } catch (e) {
-    console.log(e);
+    document.querySelector("#alert .container .note").textContent =
+      "No Such Location";
+    document.querySelector("#alert .container .note").style.display = "flex";
   }
 });
 
