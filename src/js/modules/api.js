@@ -4,8 +4,9 @@ async function getWeatherInfo(url) {
     const data = await res.json();
     const today = data.days[0];
     return {
+      temp: today.temp,
       description: data.description,
-      address: data.resolvedAddress,
+      address: data.address,
       date: today.datetime,
       tempmax: today.tempmax,
       tempmin: today.tempmin,
